@@ -1,0 +1,122 @@
+<div class="row col-12 noMargPadd" *ngIf="!passV">
+  <div class="row col-12 noMargPadd">
+    <div class="row col-12 mt-4" *ngIf="sizeDisplay == 'phone'">
+      <div class="col-1 offset-5">
+        <img src="assets/img/SystemsIcons.png" srcset="assets/img/SystemsIcons@2x.png 2x,assets/img/SystemsIcons@3x.png 3x">
+      </div>
+      <div class="col-1">
+        <img src="assets/img/SystemsIcons1.png" srcset="assets/img/SystemsIcons1@2x.png 2x,assets/img/SystemsIcons1@3x.png 3x">
+      </div>
+      <div class="col-1">
+        <img src="assets/img/SystemsIcons1.png" srcset="assets/img/SystemsIcons1@2x.png 2x,assets/img/SystemsIcons1@3x.png 3x">
+      </div>
+      <div class="col-1">
+        <img src="assets/img/SystemsIcons1.png" srcset="assets/img/SystemsIcons1@2x.png 2x,assets/img/SystemsIcons1@3x.png 3x">
+      </div>
+    </div>
+    <span class="col-12 t1" [ngClass]="{'noMargPadd': sizeDisplay == 'phone'}">
+      Crear tu cuenta
+    </span>
+    <span class="col-12 t2 mt-3">
+      Al aceptar crear una cuenta en 100 Ladrillos aceptas nuestro
+      <span class="t3">Aviso de Privacidad, Derechos Arco</span>
+      y nuestros
+      <span class="t3">Términos y Condiciones</span>.
+    </span>
+  </div>
+    <div class="mt-3 row col-12">
+      <label class="col-12">
+        ¿Cuál es tu correo electrónico?
+      </label>
+      <input class="mt-1 col-12" placeholder="tu@correo.com" (keypress)="eventHandler($event,'mail')" [(ngModel)]="data.email">
+      <label class="col-12 error" *ngIf="msgError.email != ''">
+       {{msgError.email}}
+      </label>
+    </div>
+    <div class="mt-3 row col-12">
+      <label class="col-12">
+       Ingresa una contraseña
+      </label>
+      <input type="password" id="pass" class="mt-1 col-12" placeholder="Contraseña" (keypress)="eventHandler($event,'pass')" [(ngModel)]="data.password" [disabled]="!mailV">
+      <img *ngIf="!watch" class="eye pointer col-1 offset-10" (click)="hideOrShowPassword('watch')" src="assets/img/VisibilityOff.png" srcset="assets/img/VisibilityOff@2x.png 2x,assets/img/VisibilityOff@3x.png 3x">
+      <img *ngIf="watch" class="eye pointer col-1 offset-10" (click)="hideOrShowPassword('watch')" src="assets/img/Visibility.png" srcset="assets/img/Visibility@2x.png 2x,assets/img/Visibility@3x.png 3x">
+      <label class="error" *ngIf="msgError.passwd != ''">
+        {{msgError.passwd}}
+      </label>
+    </div>
+  </div>
+  <ng-container *ngIf="!mailV && !passV">
+    <div class="row col-12 mt-3">
+      <div class="Rectangle-1299 col-3 ml-4"></div>
+      <span class="reg col-4">
+        o regístrate con:
+      </span>
+      <div class="Rectangle-1298 col-3"></div>
+    </div>
+    <div class="row col-12 mt-4">
+      <div class="col-3 offset-2">
+        <img class="pointer" src="assets/img/2000px-Google_G_Logo1.png" srcset="assets/img/2000px-Google_G_Logo1@2x.png 2x,assets/img/2000px-Google_G_Logo1@3x.png 3x">
+      </div>
+      <div class="col-3">
+        <img class="pointer" src="assets/img/microsoft-windows-logo1.png" srcset="assets/img/microsoft-windows-logo1@2x.png 2x,assets/img/microsoft-windows-logo1@3x.png 3x">
+      </div>
+      <div class="col-3">
+        <img class="pointer" src="assets/img/facebok1.png" srcset="assets/img/facebok1@2x.png 2x,assets/img/facebok1@3x.png 3x">
+      </div>
+    </div>
+    <div class="row col-12 mt-4" *ngIf="sizeDisplay == 'web'">
+      <div class="col-1 offset-5">
+        <img src="assets/img/SystemsIcons.png" srcset="assets/img/SystemsIcons@2x.png 2x,assets/img/SystemsIcons@3x.png 3x">
+      </div>
+      <div class="col-1">
+        <img src="assets/img/SystemsIcons1.png" srcset="assets/img/SystemsIcons1@2x.png 2x,assets/img/SystemsIcons1@3x.png 3x">
+      </div>
+      <div class="col-1">
+        <img src="assets/img/SystemsIcons1.png" srcset="assets/img/SystemsIcons1@2x.png 2x,assets/img/SystemsIcons1@3x.png 3x">
+      </div>
+      <div class="col-1">
+        <img src="assets/img/SystemsIcons1.png" srcset="assets/img/SystemsIcons1@2x.png 2x,assets/img/SystemsIcons1@3x.png 3x">
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="mailV && !passV">
+    <div class="row col-12 mt-2">
+      <span class="tt1">
+        Por razones de seguridad tu contraseña debe tener las siguientes carateristicas:
+      </span>
+    </div>
+    <div class="col-12">
+      <span class="tt1">
+        <img *ngIf="paramsPass.p1" src="assets/img/Oval-2-Copy-2.png" srcset="assets/img/Oval-2-Copy-2@2x.png 2x,assets/img/Oval-2-Copy-2@3x.png 3x">
+        <img *ngIf="!paramsPass.p1" src="assets/img/Oval-2-Copy-3.png" srcset="assets/img/Oval-2-Copy-3@2x.png 2x,assets/img/Oval-2-Copy-3@3x.png 3x">
+        &nbsp;&nbsp;Mínimo 6 caracteres (letras, números y caracteres especiales).<br/>
+        <img *ngIf="paramsPass.p2" src="assets/img/Oval-2-Copy-2.png" srcset="assets/img/Oval-2-Copy-2@2x.png 2x,assets/img/Oval-2-Copy-2@3x.png 3x">
+        <img *ngIf="!paramsPass.p2" src="assets/img/Oval-2-Copy-3.png" srcset="assets/img/Oval-2-Copy-3@2x.png 2x,assets/img/Oval-2-Copy-3@3x.png 3x">
+        &nbsp;&nbsp;Mínimo 1 número.<br/>
+        <img *ngIf="paramsPass.p3" src="assets/img/Oval-2-Copy-2.png" srcset="assets/img/Oval-2-Copy-2@2x.png 2x,assets/img/Oval-2-Copy-2@3x.png 3x">
+        <img *ngIf="!paramsPass.p3" src="assets/img/Oval-2-Copy-3.png" srcset="assets/img/Oval-2-Copy-3@2x.png 2x,assets/img/Oval-2-Copy-3@3x.png 3x">
+        &nbsp;&nbsp;Mínimo 1 de estos caracteres especiales !”#$%&/()=?¿^*@,[]&#123;&#125;:_>,.-|`+.<br/>
+        <img *ngIf="paramsPass.p4" src="assets/img/Oval-2-Copy-2.png" srcset="assets/img/Oval-2-Copy-2@2x.png 2x,assets/img/Oval-2-Copy-2@3x.png 3x">
+        <img *ngIf="!paramsPass.p4" src="assets/img/Oval-2-Copy-3.png" srcset="assets/img/Oval-2-Copy-3@2x.png 2x,assets/img/Oval-2-Copy-3@3x.png 3x">
+        &nbsp;&nbsp;No tener la frase “100Ladrillos”.<br/>
+        <img *ngIf="paramsPass.p5" src="assets/img/Oval-2-Copy-2.png" srcset="assets/img/Oval-2-Copy-2@2x.png 2x,assets/img/Oval-2-Copy-2@3x.png 3x">
+        <img *ngIf="!paramsPass.p5" src="assets/img/Oval-2-Copy-3.png" srcset="assets/img/Oval-2-Copy-3@2x.png 2x,assets/img/Oval-2-Copy-3@3x.png 3x">
+        &nbsp;&nbsp;No tener mas de 3 caracteres idénticos en forma consecutiva (ej: aaa).<br/>
+        <img *ngIf="paramsPass.p6" src="assets/img/Oval-2-Copy-2.png" srcset="assets/img/Oval-2-Copy-2@2x.png 2x,assets/img/Oval-2-Copy-2@3x.png 3x">
+        <img *ngIf="!paramsPass.p6" src="assets/img/Oval-2-Copy-3.png" srcset="assets/img/Oval-2-Copy-3@2x.png 2x,assets/img/Oval-2-Copy-3@3x.png 3x">
+        &nbsp;&nbsp;No tener mas de 3 caracteres numéricos y/o letras en forma secuencial&nbsp; (ej: 123).
+      </span>
+    </div>
+    <div class="mt-3 pl-3 row col-12">
+      <label class="col-12">
+        Confirma tu contraseña
+      </label>
+      <input type="password" id="passC" class="mt-1 col-2" placeholder="Contraseña" (keypress)="eventHandler($event,'passC')" [(ngModel)]="passC" [disabled]="data.password == ''">
+      <img *ngIf="!watchC" class="eye pointer col-1 offset-10" (click)="hideOrShowPassword('watchC')" src="assets/img/VisibilityOff.png" srcset="assets/img/VisibilityOff@2x.png 2x,assets/img/VisibilityOff@3x.png 3x">
+      <img *ngIf="watchC" class="eye pointer col-1 offset-10" (click)="hideOrShowPassword('watchC')" src="assets/img/Visibility.png" srcset="assets/img/Visibility@2x.png 2x,assets/img/Visibility@3x.png 3x">
+    </div>
+    <div class="col-12">
+      <button id="next" class="mt-4 next ml-2" [ngClass]="{'btn2': passV1}" [disabled]="!passV1" (click)="registerMail()">Siguiente</button>
+    </div>
+  </ng-container>
+  <phone-root *ngIf="passV" [sizeDisplay]="sizeDisplay"></phone-root>

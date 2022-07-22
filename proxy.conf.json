@@ -1,0 +1,28 @@
+
+{
+    "/api/signUp": {
+      "target": "https://frontend-recruiting.100ladrillos.com",
+      "secure": false,
+      "changeOrigin": true
+    },
+    "/api/phoneNumber": {
+      "target": "https://frontend-recruiting.100ladrillos.com",
+      "secure": true,
+      "changeOrigin": true
+    },
+    "/api/phoneNumber/verify": {
+      "target": "https://frontend-recruiting.100ladrillos.com",
+      "secure": true,
+      "changeOrigin": true
+    },
+    "/api/profile/name": {
+      "target": "https://frontend-recruiting.100ladrillos.com",
+      "secure": true,
+      "changeOrigin": true
+    },
+    "/api/profile": {
+      "target": "https://frontend-recruiting.100ladrillos.com",
+      "secure": true,
+      "changeOrigin": true
+    }
+  }

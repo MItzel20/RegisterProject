@@ -1,0 +1,65 @@
+ 
+           <ng-container *ngIf="!passNames">
+            <div class="row col-12 noMargPadd">
+              <div class="row col-12 mt-4" *ngIf="sizeDisplay == 'phone'">
+                <div class="col-1 offset-4">
+                  <img src="assets/img/SystemsIcons1.png" srcset="assets/img/SystemsIcons1@2x.png 2x,assets/img/SystemsIcons1@3x.png 3x">
+                </div>
+                <div class="col-1">
+                  <img src="assets/img/SystemsIcons1.png" srcset="assets/img/SystemsIcons1@2x.png 2x,assets/img/SystemsIcons1@3x.png 3x">
+                </div>
+                <div class="col-1">
+                  <img src="assets/img/SystemsIcons.png" srcset="assets/img/SystemsIcons@2x.png 2x,assets/img/SystemsIcons@3x.png 3x">
+                </div>
+                <div class="col-1">
+                  <img src="assets/img/SystemsIcons1.png" srcset="assets/img/SystemsIcons1@2x.png 2x,assets/img/SystemsIcons1@3x.png 3x">
+                </div>
+              </div>
+              <span class="col-12 t1"  [ngClass]="{'noMargPadd':sizeDisplay=='phone'}">
+                ¿Cómo te llamas?
+              </span>
+              <div class="mt-3 row col-12">
+                <label class="col-12">
+                  Primer nombre
+                </label>
+                <input class="mt-1 col-12 ml-2" placeholder="Primer nombre" [(ngModel)]="params.name" (keypress)="eventHandler($event,'secN')">
+              </div>
+              <div class="mt-3 row col-12">
+                <label class="col-12">
+                  Segundo nombre (Opcional)
+                </label>
+                <input class="mt-1 col-12 ml-2" placeholder="Segundo nombre" [disabled]="params.name == ''" [(ngModel)]="params.secondName" (keypress)="eventHandler($event,'lastN')">
+              </div>
+              <div class="mt-3 row col-12">
+                <label class="col-12">
+                  Primer apellido
+                </label>
+                <input class="mt-1 col-12 ml-2" placeholder="Primer apellido" [disabled]="params.name == ''" [(ngModel)]="params.firstLastName" (keypress)="eventHandler($event,'lastNS')">
+              </div>
+              <div class="mt-3 row col-12">
+                <label class="col-12">
+                  Segundo apellido (Opcional)
+                </label>
+                <input class="mt-1 col-12 ml-2" placeholder="Segundo apellido" [disabled]="params.firstLastName == ''" [(ngModel)]="params.secondLastName" (keypress)="eventHandler($event,'send')">
+              </div>
+             </div>
+            <div class="row col-12 mt-4">
+              <button class="col-4 btn1 ml-1">Anterior</button>
+              <button class="col-4 btn1" style="margin-left: 15px;" [ngClass]="{'btn2': fullData}" [disabled]="!fullData" (click)="sendNames()">Siguiente</button>
+            </div>
+            <div class="row col-12 mt-4" *ngIf="sizeDisplay != 'phone'">
+              <div class="col-1 offset-4">
+                <img src="assets/img/SystemsIcons1.png" srcset="assets/img/SystemsIcons1@2x.png 2x,assets/img/SystemsIcons1@3x.png 3x">
+              </div>
+              <div class="col-1">
+                <img src="assets/img/SystemsIcons1.png" srcset="assets/img/SystemsIcons1@2x.png 2x,assets/img/SystemsIcons1@3x.png 3x">
+              </div>
+              <div class="col-1">
+                <img src="assets/img/SystemsIcons.png" srcset="assets/img/SystemsIcons@2x.png 2x,assets/img/SystemsIcons@3x.png 3x">
+              </div>
+              <div class="col-1">
+                <img src="assets/img/SystemsIcons1.png" srcset="assets/img/SystemsIcons1@2x.png 2x,assets/img/SystemsIcons1@3x.png 3x">
+              </div>
+            </div>
+         </ng-container>
+         <validate-root *ngIf="passNames" [validate]="validate" [sizeDisplay]="sizeDisplay"></validate-root>
